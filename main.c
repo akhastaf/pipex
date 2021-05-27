@@ -12,20 +12,6 @@ int     main(int ac, char **av, char **env)
         return 1;
     pipex->env = env;
     get_cmd(av, pipex);
-    // printf("%s\n", pipex->cmd[0].bin);
-    // printf("%s\n", pipex->cmd[1].bin);
-    // i = 0;
-    // while (pipex->cmd[0].arg[i])
-    // {
-    //     printf("%s\n", pipex->cmd[0].arg[i]);
-    //     i++;
-    // }
-    // i = 0;
-    // while (pipex->cmd[1].arg[i])
-    // {
-    //     printf("%s\n", pipex->cmd[1].arg[i]);
-    //     i++;
-    // }
     execute(pipex);
     return 0;
 }

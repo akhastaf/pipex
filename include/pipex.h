@@ -16,7 +16,6 @@ typedef struct  s_cmd
     int     out;
 }   t_cmd;
 
-
 typedef struct s_pipex
 {
     t_cmd   *cmd;
@@ -24,8 +23,6 @@ typedef struct s_pipex
     pid_t   pid1;
     pid_t   pid2;
     int     pipe[2];
-    int     in;
-    int     out;
     int     stratus;
 }   t_pipex;
 
@@ -34,13 +31,13 @@ char    *get_path(char *bin, char **env);
 void    execute(t_pipex *pipex);
 
 
-char				**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strappend(char *str, char c);
 void	ft_delete_arg(char **arg);
-int ft_strlen(const char *s);
+int     ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

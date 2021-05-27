@@ -2,9 +2,6 @@
 
 void    get_cmd(char **av, t_pipex *p)
 {
-    int i;
-
-    i = 0;
     p->cmd = malloc(sizeof(t_cmd) * 2);
     if (!p->cmd)
         return ;
