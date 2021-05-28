@@ -18,7 +18,7 @@ char    *get_path(char *bin, char **env)
         }    
         i++;
     }
-    p = ft_split(path, ':');
+    p = ft_split(path, ':');// {"/bin", "/usr/bin", NULL} /usr/bin/grep
     i = 0;
     while (p[i])
     {

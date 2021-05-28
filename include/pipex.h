@@ -7,26 +7,35 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+typedef struct		s_list
+{
+	void			*data;
+	struct s_list	*next;
+	struct s_list	*prev;
+	
+}					t_list;
+
 typedef struct  s_cmd
 {
     char    *bin;
     char    **arg;
-    char    *file;
-    int     in;
-    int     out;
+    int     pipe[2];
 }   t_cmd;
 
 typedef struct s_pipex
 {
-    t_cmd   *cmd;
+    t_list   *cmd;
     char    **env;
-    pid_t   pid1;
-    pid_t   pid2;
-    int     pipe[2];
-    int     stratus;
+    pid_t   pid;
+    char    *filein;
+    char    *fileout;
+    int     in;
+    int     out;
+    int     status;
 }   t_pipex;
 
-void    get_cmd(char **av, t_pipex *p);
+void    get_cmds(char **av, int ac, t_pipex *p);
+t_cmd   *get_cmd(char *s, char **env);
 char    *get_path(char *bin, char **env);
 void    execute(t_pipex *pipex);
 
@@ -39,5 +48,15 @@ char	*ft_strappend(char *str, char c);
 void	ft_delete_arg(char **arg);
 int     ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+// LIST
+void	ft_lstadd_back(t_list **alst, t_list *new);
+void	ft_lstadd_front(t_list **alst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *data);
+void	ft_listprint(t_list *lst);
+int		ft_lstsize(t_list *lst);
 
 #endif
