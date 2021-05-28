@@ -6,7 +6,7 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:53 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/05/28 17:36:54 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/05/28 18:18:12 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char    *get_path(char *bin, char **env)
         }    
         i++;
     }
-    p = ft_split(path, ':');// {"/bin", "/usr/bin", NULL} /usr/bin/grep
+    p = ft_split(path, ':');
     i = 0;
     while (p[i])
     {
@@ -45,5 +45,5 @@ char    *get_path(char *bin, char **env)
         i++;
     }
     ft_delete_arg(p);
-    return bin;
+    return (bin);
 }

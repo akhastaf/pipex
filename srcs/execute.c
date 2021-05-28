@@ -6,7 +6,7 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:31 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/05/28 17:36:32 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/05/28 18:19:46 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void    execute(t_pipex *pipex)
                ((t_cmd *)tmp->data)->arg, pipex->env))
             {
                 perror("fatal error");
-                exit(0);
+                exit(1);
             }
        }
        close(((t_cmd*)tmp->data)->pipe[1]);
