@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:08 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/05/28 18:00:44 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/05/28 17:57:15 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int     main(int ac, char **av, char **env)
 {
-    t_pipex  *pipex;
-    t_list   *tmp;
-    int  i;
+   t_pipex  *pipex;
+   t_list   *tmp;
+   int  i;
 
-    if (ac < 5)
+    if (ac != 5)
     {
-        ft_putendl_fd("Error : Missing arguments\n", 2);
+        ft_putendl("Error : Missing arguments\n", 2);
         return (1);
     }
     pipex = malloc(sizeof(t_pipex));
-     if (!pipex)
+    if (!pipex)
     {
-        perror("Fatal error");
+        perror("Fatal error",);
         return (1);
     }
     pipex->env = env;

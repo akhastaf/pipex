@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_cmds.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/28 17:36:15 by akhastaf          #+#    #+#             */
+/*   Updated: 2021/05/28 17:59:22 by akhastaf         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/pipex.h"
 
 t_cmd   *get_cmd(char *s, char **env)
@@ -6,7 +18,10 @@ t_cmd   *get_cmd(char *s, char **env)
 
     cmd = malloc(sizeof(t_cmd));
     if (!cmd)
+    {
+        perror("Fatal error");
         return (NULL);
+    }
     cmd->arg = ft_split(s, ' ');
     cmd->bin = get_path(ft_strdup(cmd->arg[0]), env);
     cmd->pipe[0] = -1;

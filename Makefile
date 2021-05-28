@@ -10,6 +10,8 @@ all: $(NAME)
 $(NAME):
 	@$(C) -o $(NAME) main.c $(SRC)
 
+bonus:
+	@$(C) -o $(NAME) main_bonus.c $(SRC)
 debug:
 	@$(C) -g -o $(NAME) main.c $(SRC) -fsanitize=address 
 
