@@ -6,19 +6,19 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:36 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/05/28 17:36:37 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/05/29 17:36:24 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-static		int		ft_wordscount(const char *str, char c)
+static int	ft_wordscount(const char *str, char c)
 {
 	int		i;
 	int		wc;
 	char	*s;
 
-	s = (char*)str;
+	s = (char *)str;
 	i = 0;
 	wc = 0;
 	if (s[i] != c)
@@ -32,9 +32,9 @@ static		int		ft_wordscount(const char *str, char c)
 	return (wc);
 }
 
-static	size_t		ft_wordlen(char *s, char c, int i)
+static size_t	ft_wordlen(char *s, char c, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (s[i] != c && s[i])
@@ -45,7 +45,7 @@ static	size_t		ft_wordlen(char *s, char c, int i)
 	return (j);
 }
 
-static	void		*ft_dealocate(char ***tab, int i)
+static void	*ft_dealocate(char ***tab, int i)
 {
 	while (i >= 0)
 	{
@@ -56,7 +56,13 @@ static	void		*ft_dealocate(char ***tab, int i)
 	return (NULL);
 }
 
-char				**ft_split(char const *s, char c)
+static void	skip(char *s, char c, int *i)
+{
+	while (s[*i] == c && s[*i])
+		(*i)++;
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char	**words;
 	int		i;
@@ -65,20 +71,20 @@ char				**ft_split(char const *s, char c)
 	size_t	len;
 
 	i = 0;
-	j = 0;
-	if (!((char*)s))
+	j = -1;
+	if (!((char *)s))
 		return (NULL);
-	wc = ft_wordscount((char*)s, c);
-	if (!(words = malloc((wc + 1) * sizeof(char*))))
+	wc = ft_wordscount((char *)s, c);
+	words = malloc((wc + 1) * sizeof(char *));
+	if (!words)
 		return (NULL);
-	while (j < wc && ((char*)s)[i])
+	while (++j < wc && ((char *)s)[i])
 	{
-		while (((char*)s)[i] == c && ((char*)s)[i])
-			i++;
-		len = ft_wordlen((char*)s, c, i);
-		if (!(words[j] = ft_substr((char*)s, i, len)))
+		skip((char *)s, c, &i);
+		len = ft_wordlen((char *)s, c, i);
+		words[j] = ft_substr((char *)s, i, len);
+		if (!words[j])
 			return (ft_dealocate(&words, j));
-		j++;
 		i = i + len;
 	}
 	words[j] = NULL;

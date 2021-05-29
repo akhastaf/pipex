@@ -6,20 +6,20 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:47 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/05/28 17:36:48 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/05/29 17:20:26 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char	*cs1;
 	unsigned char	*cs2;
 	size_t			i;
 
-	cs1 = (unsigned char*)s1;
-	cs2 = (unsigned char*)s2;
+	cs1 = (unsigned char *)s1;
+	cs2 = (unsigned char *)s2;
 	i = 0;
 	if (!n)
 		return (0);
