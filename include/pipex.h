@@ -6,7 +6,7 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:37:04 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/05/29 17:44:06 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/06/07 18:54:50 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+#include <errno.h>
 
 typedef struct s_list
 {

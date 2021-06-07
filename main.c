@@ -6,7 +6,7 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:08 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/05/29 17:05:54 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/06/07 19:00:06 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	main(int ac, char **av, char **env)
 	t_list	*tmp;
 	int		i;
 
-	if (ac < 5)
+	if (ac != 5)
 	{
-		ft_putendl_fd("Error : Missing arguments\n", 2);
+		ft_putendl_fd("Error : Missing arguments", 2);
 		return (1);
 	}
 	pipex = malloc(sizeof(t_pipex));
@@ -31,6 +31,8 @@ int	main(int ac, char **av, char **env)
 	}
 	pipex->env = env;
 	get_cmds(av, ac, pipex);
+	open_pipe(pipex->cmd);
 	execute(pipex);
+	wait_execute(pipex);
 	return (0);
 }

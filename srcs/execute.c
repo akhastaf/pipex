@@ -6,7 +6,7 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:31 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/05/29 17:37:48 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/06/07 19:00:00 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,22 @@
 void	setup_in(t_pipex *pipex)
 {
 	pipex->in = open(pipex->filein, O_RDONLY, S_IRWXU);
+	if (pipex->in < 0)
+	{
+		perror("Fatal error");
+		exit(1);
+	}
 	dup2(pipex->in, 0);
 }
 
 void	setup_out(t_pipex *pipex)
 {
 	pipex->out = open(pipex->fileout, O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
+	if (pipex->out < 0)
+	{
+		perror("Fatal error");
+		exit(1);
+	}
 	dup2(pipex->out, 1);
 }
 
@@ -36,7 +46,6 @@ void	execute(t_pipex *pipex)
 {
 	t_list	*tmp;
 
-	open_pipe(pipex->cmd);
 	tmp = pipex->cmd;
 	while (tmp)
 	{
@@ -50,12 +59,14 @@ void	execute(t_pipex *pipex)
 			setup_pipe(tmp);
 			if (execve(((t_cmd *)tmp->data)->bin,
 					((t_cmd *)tmp->data)->arg, pipex->env))
+			{
+				perror("Fatal error");
 				exit(1);
+			}
 		}
 		close(((t_cmd *)tmp->data)->pipe[1]);
 		if (tmp->prev)
 			close(((t_cmd *)tmp->prev->data)->pipe[0]);
 		tmp = tmp->next;
 	}
-	wait_execute(pipex);
 }
