@@ -6,7 +6,7 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:37:04 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/06/07 18:54:50 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/06/09 15:08:22 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-#include <errno.h>
+# include <errno.h>
 
 typedef struct s_list
 {
@@ -70,4 +70,5 @@ void	ft_putendl_fd(char *s, int fd);
 void	open_pipe(t_list *cmd);
 void	close_pipe(t_list *cmd);
 void	setup_pipe(t_list *cmd);
+void	wait_execute(t_pipex *pipex);
 #endif

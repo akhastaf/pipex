@@ -6,7 +6,7 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:53 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/05/29 17:26:10 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/06/09 15:15:23 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*get_envpath(char **env)
 	while (env[i])
 	{
 		if (!ft_strncmp("PATH=", env[i], 5))
-			return (env[i]);
+			return (env[i] + 5);
 		i++;
 	}
 	return (NULL);
@@ -47,6 +47,7 @@ char	*get_path(char *bin, char **env)
 			free(bin);
 			return (binpath);
 		}
+		free(binpath);
 	}
 	ft_delete_arg(p);
 	return (bin);

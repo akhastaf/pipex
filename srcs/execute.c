@@ -6,7 +6,7 @@
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:31 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/06/07 19:00:00 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/06/09 15:08:13 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	setup_out(t_pipex *pipex)
 	dup2(pipex->out, 1);
 }
 
-static void	wait_execute(t_pipex *pipex)
+void	wait_execute(t_pipex *pipex)
 {
 	close_pipe(pipex->cmd);
 	waitpid(pipex->pid, &pipex->status, 0);
