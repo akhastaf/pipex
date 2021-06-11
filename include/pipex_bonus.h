@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/28 17:37:04 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/06/11 16:01:30 by akhastaf         ###   ########.fr       */
+/*   Created: 2021/06/11 11:33:02 by akhastaf          #+#    #+#             */
+/*   Updated: 2021/06/11 16:02:31 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <errno.h>
+# define BUFFER_SIZE 32
 
 typedef struct s_list
 {
@@ -39,9 +40,9 @@ typedef struct s_pipex
 	t_list	*cmd;
 	char	**env;
 	pid_t	pid;
-	char	*filein;
+	char	*stop;
 	char	*fileout;
-	int		in;
+	int		pipein[2];
 	int		out;
 	int		status;
 }			t_pipex;
@@ -71,6 +72,13 @@ void	open_pipe(t_list *cmd);
 void	close_pipe(t_list *cmd);
 void	setup_pipe(t_list *cmd);
 void	wait_execute(t_pipex *pipex);
+void	get_input(t_pipex *pipex);
+int		get_next_line(int fd, char **line);
+int		gnl(int fd, char **line);
+void	ft_putstr_fd(char *s, int fd);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strndup(const char *s1, size_t n);
 void	check_args(int ac, char **arg);
 int		ft_is_empty(char *s);
 #endif

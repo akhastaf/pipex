@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmds.c                                         :+:      :+:    :+:   */
+/*   get_cmds_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhastaf <akhastaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 17:36:15 by akhastaf          #+#    #+#             */
-/*   Updated: 2021/06/11 14:42:36 by akhastaf         ###   ########.fr       */
+/*   Updated: 2021/06/11 14:42:19 by akhastaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../include/pipex_bonus.h"
 
 t_cmd	*get_cmd(char *s, char **env)
 {
@@ -36,7 +36,7 @@ void	get_cmds(char **av, int ac, t_pipex *p)
 
 	p->cmd = NULL;
 	check_args(ac, av);
-	p->filein = ft_strdup(av[1]);
+	p->stop = ft_strdup(av[1]);
 	p->fileout = ft_strdup(av[ac - 1]);
 	i = 1;
 	while (av[++i] && (i < ac - 1))
